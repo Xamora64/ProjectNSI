@@ -1,6 +1,7 @@
 import pygame
 pygame.init()
 
+#test
 # générer la fenetre de notre jeu
 pygame.display.set_caption("Mage")
 infoEcran = pygame.display.Info()
