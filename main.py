@@ -1,8 +1,9 @@
 import pygame
+from jeu import Jeu
 
 pygame.init()
 
-# générer la fenetre de notre jeu
+# générer la entre de notre jeu
 pygame.display.set_caption("Mage")
 
 # Info de la taille de l'écran de l'utilisateur
