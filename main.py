@@ -21,10 +21,11 @@ class Player(pygame.sprite.Sprite):
         self.attack = 5
         self.velocity = 6
         self.image = pygame.image.load("design\Wizard\PNG\Wizard_fire\idle_2.png")  # attention relire design\2D-Game-Wizard-Character-Sprite\PNG\wizard_fire\idle_2.png
+        self.image = pygame.transform.scale(self.image, (infoEcran.current_w //5, infoEcran.current_h//3))
         # position de départ du joueur 1
         self.rect = self.image.get_rect()
-        self.rect.x = 300
-        self.rect.y = 1000
+        self.rect.x = 240
+        self.rect.y = 550
 
 
 # générer la fenetre de notre jeu
