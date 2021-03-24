@@ -24,8 +24,8 @@ class Player(pygame.sprite.Sprite):
         self.image = pygame.transform.scale(self.image, (infoEcran.current_w //5, infoEcran.current_h//3))
         # position de départ du joueur 1
         self.rect = self.image.get_rect()
-        self.rect.x = 240
-        self.rect.y = 550
+        self.rect.x =infoEcran.current_w//9
+        self.rect.y =infoEcran.current_h//1.55
 
 
 # générer la fenetre de notre jeu
