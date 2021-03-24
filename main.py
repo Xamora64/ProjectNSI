@@ -1,32 +1,6 @@
-import os
-
 import pygame
 
 pygame.init()
-
-
-# classe qui représente jeu
-class Jeu:
-    def __init__(self):
-        self.player = Player()
-
-
-# creation 1er classe joueur
-
-class Player(pygame.sprite.Sprite):
-    def __init__(self):
-        super().__init__()
-        self.health = 100
-        self.max_health = 100
-        self.attack = 5
-        self.velocity = 6
-        self.image = pygame.image.load("design\Wizard\PNG\Wizard_fire\idle_2.png")  # attention relire design\2D-Game-Wizard-Character-Sprite\PNG\wizard_fire\idle_2.png
-        self.image = pygame.transform.scale(self.image, (infoEcran.current_w //5, infoEcran.current_h//3))
-        # position de départ du joueur 1
-        self.rect = self.image.get_rect()
-        self.rect.x =infoEcran.current_w//9
-        self.rect.y =infoEcran.current_h//1.55
-
 
 # générer la fenetre de notre jeu
 pygame.display.set_caption("Mage")
