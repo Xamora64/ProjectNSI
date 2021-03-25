@@ -27,6 +27,10 @@ while enFonctionnement:
 
     # apparaitre mage
     ecran.blit(jeu.player.image, jeu.player.rect)
+    if jeu.pressed.get(pygame.K_d):
+        jeu.player.move_right()
+    elif jeu.pressed.get(pygame.K_q):
+        jeu.player.move_left()
 
     # mettre à jour l'écran
     pygame.display.flip()
@@ -37,3 +41,8 @@ while enFonctionnement:
         if event.type == pygame.QUIT:
             enFonctionnement = False
             pygame.quit()
+        #detecter si un joueur lache une touche
+        elif event.type==pygame.KEYDOWN:
+            jeu.pressed[event.key] = True
+        elif event.type == pygame.KEYUP:
+            jeu.pressed[event.key] = False

@@ -10,7 +10,7 @@ class Player(pygame.sprite.Sprite):
         self.health = 100
         self.max_health = 100
         self.attack = 5
-        self.velocity = 6
+        self.velocity = 10
         self.image = pygame.image.load("design\Wizard\PNG\Wizard_fire\idle_2.png")
         # adaptation pour que mage1 puisse s'adapter à tout écran
         self.image = pygame.transform.scale(self.image, (infoEcran.current_w // 5, infoEcran.current_h // 3))
@@ -18,3 +18,9 @@ class Player(pygame.sprite.Sprite):
         self.rect = self.image.get_rect()
         self.rect.x = infoEcran.current_w // 9
         self.rect.y = infoEcran.current_h // 1.55
+
+    def move_right(self):
+        self.rect.x+=self.velocity
+
+    def move_left(self):
+        self.rect.x-=self.velocity
