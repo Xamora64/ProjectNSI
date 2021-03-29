@@ -27,6 +27,11 @@ while enFonctionnement:
 
     # apparaitre mage
     ecran.blit(jeu.player.image, jeu.player.rect)
+
+    #appliquer ensemble image du groupe de projectile
+    jeu.player.all_projectiles.draw(ecran)
+
+    # Verification touche + Appel fonction de deplacement
     if jeu.pressed.get(pygame.K_d):
         jeu.player.move_right()
     elif jeu.pressed.get(pygame.K_q):
@@ -44,5 +49,10 @@ while enFonctionnement:
         #detecter si un joueur lache une touche
         elif event.type==pygame.KEYDOWN:
             jeu.pressed[event.key] = True
+            #detecte si touche e est declanché pour lancer le projectil
+            if event.key==pygame.K_e:
+                jeu.player.launch_Magie() #pas sure pour la majuscule
+
+
         elif event.type == pygame.KEYUP:
             jeu.pressed[event.key] = False
