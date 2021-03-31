@@ -1,5 +1,5 @@
 import pygame
-from Magie import magie
+from magie import Magie
 
 # creation 1er classe joueur
 
@@ -10,7 +10,7 @@ class Player(pygame.sprite.Sprite):
         self.health = 100
         self.max_health = 100
         self.attack = 5
-        self.all_projectiles=pygame.sprite.Group() #verifie juste pour Lou
+        self.all_projectiles = pygame.sprite.Group()
         self.velocity = 10
         self.image = pygame.image.load("design\Wizard\PNG\Wizard_fire\idle_2.png")
         # adaptation pour que mage1 puisse s'adapter à tout écran
@@ -20,10 +20,10 @@ class Player(pygame.sprite.Sprite):
         self.rect.x = infoEcran.current_w // 9
         self.rect.y = infoEcran.current_h // 1.55
 
-    def launch_Magie (self):
-        # creation d'une classe magie pour cloner l'attaque magique
-        self.all_projectiles.add(magie)
-
+    def launch_Magie(self):
+        # creation d'une nouvelle instance magie pour cloner l'attaque magique
+        self.all_projectiles.add(Magie(self))
+        print("oui")
 
     def move_right(self):
         self.rect.x+=self.velocity

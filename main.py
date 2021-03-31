@@ -8,11 +8,11 @@ pygame.display.set_caption("Mage")
 
 # Info de la taille de l'écran de l'utilisateur
 infoEcran = pygame.display.Info()
-ecran = pygame.display.set_mode((infoEcran.current_w, infoEcran.current_h))
+ecran = pygame.display.set_mode((int(infoEcran.current_w/1.35), int(infoEcran.current_h/1.35)))
 
 # importer l'image pour l'arrière plan du jeu
 fondEcran = pygame.image.load("design\cartoonFantasticBackground\PNG\Cartoon_Forest_BG_04\Foret_1.png")
-fondEcran = pygame.transform.scale(fondEcran, (infoEcran.current_w, infoEcran.current_h))
+fondEcran = pygame.transform.scale(fondEcran, (int(infoEcran.current_w/1.35), int(infoEcran.current_h/1.35)))
 
 # Charger notre jeu
 jeu = Jeu()
