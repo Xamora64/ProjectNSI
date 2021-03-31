@@ -6,4 +6,4 @@ from player import Player
 class Jeu:
     def __init__(self):
         self.player = Player()
-        self.pressed = {}
+        self.pressed={}
