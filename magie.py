@@ -11,3 +11,6 @@ class Magie(pygame.sprite.Sprite):
         self.rect=self.image.get_rect()
         self.rect.x = player.rect.x + (infoEcran.current_w//6.2)
         self.rect.y = player.rect.y + (infoEcran.current_w//10)
+
+    def move(self):
+        self.rect.x += self.velocity

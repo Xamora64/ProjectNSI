@@ -31,12 +31,18 @@ while enFonctionnement:
     ecran.blit(jeu.player_red.image, jeu.player_red.rect)
     ecran.blit(jeu.player_purple.image, jeu.player_purple.rect)
 
+    # récuperer la magie du joueur
+    for magie in jeu.player_red.all_projectiles:
+        magie.move()
+    for magie in jeu.player_purple.all_projectiles:
+        magie.move()
 
     #appliquer ensemble image du groupe de projectile
     jeu.player_red.all_projectiles.draw(ecran)
     jeu.player_purple.all_projectiles.draw(ecran)
 
     # Verification touche + Appel fonction de deplacement
+    #perso rouge
     if jeu.pressed.get(pygame.K_d):
         jeu.player_red.move_right(flipped_Red)
         flipped_Red = False
@@ -44,6 +50,7 @@ while enFonctionnement:
         jeu.player_red.move_left(flipped_Red)
         flipped_Red = True
 
+    #perso violet
     if jeu.pressed.get(pygame.K_RIGHT):
         jeu.player_purple.move_right(flipped_Purple)
         flipped_Purple = False
@@ -66,7 +73,7 @@ while enFonctionnement:
             #detecte si touche e est declanché pour lancer le projectil
             if event.key==pygame.K_e:
                 jeu.player_red.launch_Magie()
-            if event.key==pygame.K_0:
+            if event.key==pygame.K_KP0:
                 jeu.player_purple.launch_Magie()
 
         elif event.type == pygame.KEYUP:
