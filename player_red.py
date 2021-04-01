@@ -2,8 +2,7 @@ import pygame
 from magie import Magie
 
 # creation 1er classe joueur
-
-class Player(pygame.sprite.Sprite):
+class Player_red(pygame.sprite.Sprite):
     def __init__(self):
         super().__init__()
         infoEcran = pygame.display.Info()
@@ -23,10 +22,13 @@ class Player(pygame.sprite.Sprite):
     def launch_Magie(self):
         # creation d'une nouvelle instance magie pour cloner l'attaque magique
         self.all_projectiles.add(Magie(self))
-        print("oui")
 
-    def move_right(self):
+    def move_right(self, flipped):
         self.rect.x+=self.velocity
+        if flipped == True:
+            self.image=pygame.transform.flip(self.image,90,0)
 
-    def move_left(self):
+    def move_left(self, flipped):
         self.rect.x-=self.velocity
+        if flipped == False:
+            self.image=pygame.transform.flip(self.image,-90,0)

@@ -18,6 +18,8 @@ fondEcran = pygame.transform.scale(fondEcran, (int(infoEcran.current_w/1.35), in
 jeu = Jeu()
 
 enFonctionnement = True
+flipped_Purple = False
+flipped_Red = False
 
 # boucle tant que running est vrai
 while enFonctionnement:
@@ -26,16 +28,28 @@ while enFonctionnement:
     ecran.blit(fondEcran, (0, 0))
 
     # apparaitre mage
-    ecran.blit(jeu.player.image, jeu.player.rect)
+    ecran.blit(jeu.player_red.image, jeu.player_red.rect)
+    ecran.blit(jeu.player_purple.image, jeu.player_purple.rect)
+
 
     #appliquer ensemble image du groupe de projectile
-    jeu.player.all_projectiles.draw(ecran)
+    jeu.player_red.all_projectiles.draw(ecran)
+    jeu.player_purple.all_projectiles.draw(ecran)
 
     # Verification touche + Appel fonction de deplacement
     if jeu.pressed.get(pygame.K_d):
-        jeu.player.move_right()
+        jeu.player_red.move_right(flipped_Red)
+        flipped_Red = False
     elif jeu.pressed.get(pygame.K_q):
-        jeu.player.move_left()
+        jeu.player_red.move_left(flipped_Red)
+        flipped_Red = True
+
+    if jeu.pressed.get(pygame.K_RIGHT):
+        jeu.player_purple.move_right(flipped_Purple)
+        flipped_Purple = False
+    elif jeu.pressed.get(pygame.K_LEFT):
+        jeu.player_purple.move_left(flipped_Purple)
+        flipped_Purple = True
 
     # mettre à jour l'écran
     pygame.display.flip()
@@ -51,8 +65,9 @@ while enFonctionnement:
             jeu.pressed[event.key] = True
             #detecte si touche e est declanché pour lancer le projectil
             if event.key==pygame.K_e:
-                jeu.player.launch_Magie() #pas sure pour la majuscule
-
+                jeu.player_red.launch_Magie()
+            if event.key==pygame.K_0:
+                jeu.player_purple.launch_Magie()
 
         elif event.type == pygame.KEYUP:
             jeu.pressed[event.key] = False
