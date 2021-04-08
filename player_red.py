@@ -6,7 +6,7 @@ class Player_red(pygame.sprite.Sprite):
     def __init__(self):
         super().__init__()
         infoEcran = pygame.display.Info()
-        self.health = 10
+        self.health = 100
         self.max_health = 100
         self.attack = 5
         self.all_projectiles = pygame.sprite.Group()
@@ -18,6 +18,10 @@ class Player_red(pygame.sprite.Sprite):
         self.rect = self.image.get_rect()
         self.rect.x = infoEcran.current_w // 9
         self.rect.y = infoEcran.current_h // 1.55
+
+    def damage (self, quantité ):
+        #infliger des degats
+        self.health-=quantité
 
     def maj_barre_vie (self,surface):
         #couleur pour jauge de vie

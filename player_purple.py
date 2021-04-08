@@ -6,7 +6,7 @@ class Player_purple(pygame.sprite.Sprite):
     def __init__(self):
         super().__init__()
         infoEcran = pygame.display.Info()
-        self.health = 10
+        self.health = 100
         self.max_health = 100
         self.attack = 5
         self.all_projectiles = pygame.sprite.Group()
