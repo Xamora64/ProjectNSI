@@ -19,6 +19,18 @@ class Player_red(pygame.sprite.Sprite):
         self.rect.x = infoEcran.current_w // 9
         self.rect.y = infoEcran.current_h // 1.55
 
+    def maj_barre_vie (self,surface):
+        #couleur pour jauge de vie
+        couleure_barre =(139, 246, 161) #verte
+
+        #position jauge de vie plus taille
+        position_barre=[self.rect.x,self.rect.y, self.health, 10] #self.health est la longueur de la barre , epaisseur
+
+        #apparition barre de vie
+        pygame.draw.rect(surface,couleure_barre,position_barre)
+
+
+
     def launch_Magie(self):
         # creation d'une nouvelle instance magie pour cloner l'attaque magique
         self.all_projectiles.add(Magie(self))

@@ -31,6 +31,7 @@ while enFonctionnement:
     ecran.blit(jeu.player_red.image, jeu.player_red.rect)
     ecran.blit(jeu.player_purple.image, jeu.player_purple.rect)
 
+
     # récuperer la magie du joueur
     for magie in jeu.player_red.all_projectiles:
         magie.move()
@@ -40,6 +41,8 @@ while enFonctionnement:
     #appliquer ensemble image du groupe de projectile
     jeu.player_red.all_projectiles.draw(ecran)
     jeu.player_purple.all_projectiles.draw(ecran)
+    jeu.player_red.maj_barre_vie(ecran)
+    jeu.player_purple.maj_barre_vie(ecran)
 
     # Verification touche + Appel fonction de deplacement
     #perso rouge
