@@ -6,7 +6,7 @@ class Player_red(pygame.sprite.Sprite):
     def __init__(self):
         super().__init__()
         infoEcran = pygame.display.Info()
-        self.health = 100
+        self.health = 10
         self.max_health = 100
         self.attack = 5
         self.all_projectiles = pygame.sprite.Group()
@@ -21,13 +21,20 @@ class Player_red(pygame.sprite.Sprite):
 
     def maj_barre_vie (self,surface):
         #couleur pour jauge de vie
-        couleure_barre =(139, 246, 161) #verte
+        couleur_barre =(124, 233, 146) #verte
+
+        # couleur arriere plan de jauge
+        fond_couleur_barre = (186, 216, 186)  # gris
 
         #position jauge de vie plus taille
-        position_barre=[self.rect.x,self.rect.y, self.health, 10] #self.health est la longueur de la barre , epaisseur
+        position_barre=[self.rect.x+50,self.rect.y-5, self.health, 10] #self.health est la longueur de la barre , epaisseur
+
+        # position arriere plan jauge
+        arriere_plan_position = [self.rect.x +50, self.rect.y -5, self.max_health,10]  # self.max_health est la longueur totale de la barre , epaisseur
 
         #apparition barre de vie
-        pygame.draw.rect(surface,couleure_barre,position_barre)
+        pygame.draw.rect(surface, fond_couleur_barre, arriere_plan_position)
+        pygame.draw.rect(surface,couleur_barre,position_barre)
 
 
 
