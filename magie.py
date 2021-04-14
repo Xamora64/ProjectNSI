@@ -15,13 +15,17 @@ class Magie(pygame.sprite.Sprite):
             self.rect.x = player.rect.x + (self.ecranW // 6.2)
             self.rect.y = player.rect.y + (self.ecranW // 10)
         else:
-            self.rect.x = player.rect.x + (self.ecranW // 50)
+            self.rect.x = player.rect.x - (self.ecranW //50)
             self.rect.y = player.rect.y + (self.ecranW // 10)
 
     def remove(self):
         self.player.all_projectiles.remove(self)
 
     def move(self, flipped):
+            if self.player.jeu.check_collision(self.player.jeu.player_red,self.player.all_projectiles) or self.player.jeu.check_collision(self.player.jeu.player_purple,self.player.all_projectiles):
+                #supprime la boule quand elle touche un joueur
+                self.remove()
+
             if not flipped and self.magie_turn == 0 or self.magie_turn == 1:
                 self.rect.x += self.velocity
                 self.magie_turn = 1
