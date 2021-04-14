@@ -3,8 +3,10 @@ from magie import Magie
 
 # creation 1er classe joueur
 class Player_red(pygame.sprite.Sprite):
-    def __init__(self):
+    def __init__(self, jeu):
+        self.jeu = jeu
         super().__init__()
+        self.jeu = jeu
         infoEcran = pygame.display.Info()
         self.health = 100
         self.max_health = 100

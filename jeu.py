@@ -6,9 +6,12 @@ from player_purple import Player_purple
 # classe qui représente jeu
 class Jeu:
     def __init__(self):
-        self.player_red = Player_red()
+        self.player_red = Player_red(self)
         self.player_purple = Player_purple()
         self.pressed={}
+
+    def check_collision(self, sprite, group):
+        return pygame.sprite.spritecollide(sprite, group, True, pygame.sprite.collide_mask)
 
 
 
