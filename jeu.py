@@ -7,7 +7,7 @@ from player_purple import Player_purple
 class Jeu:
     def __init__(self):
         self.player_red = Player_red(self)
-        self.player_purple = Player_purple()
+        self.player_purple = Player_purple(self)
         self.pressed={}
 
     def check_collision(self, sprite, group):

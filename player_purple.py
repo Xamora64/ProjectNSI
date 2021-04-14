@@ -3,8 +3,9 @@ from magie import Magie
 
 # creation 1er classe joueur
 class Player_purple(pygame.sprite.Sprite):
-    def __init__(self):
+    def __init__(self, jeu):
         super().__init__()
+        self.jeu = jeu
         infoEcran = pygame.display.Info()
         self.health = 100
         self.max_health = 100
@@ -37,9 +38,9 @@ class Player_purple(pygame.sprite.Sprite):
         pygame.draw.rect(surface, fond_couleur_barre,arriere_plan_position)
         pygame.draw.rect(surface,couleur_barre,position_barre)
 
-    def launch_Magie(self):
+    def launch_Magie(self, flipped):
         # creation d'une nouvelle instance magie pour cloner l'attaque magique
-        self.all_projectiles.add(Magie(self))
+        self.all_projectiles.add(Magie(self, flipped))
 
     def move_right(self, flipped):
         self.rect.x+=self.velocity

@@ -4,7 +4,6 @@ from magie import Magie
 # creation 1er classe joueur
 class Player_red(pygame.sprite.Sprite):
     def __init__(self, jeu):
-        self.jeu = jeu
         super().__init__()
         self.jeu = jeu
         infoEcran = pygame.display.Info()

@@ -78,7 +78,7 @@ while enFonctionnement:
             if event.key==pygame.K_e:
                 jeu.player_red.launch_Magie(flipped_Red)
             if event.key==pygame.K_KP0:
-                jeu.player_purple.launch_Magie()
+                jeu.player_purple.launch_Magie(flipped_Purple)
 
         elif event.type == pygame.KEYUP:
             jeu.pressed[event.key] = False
