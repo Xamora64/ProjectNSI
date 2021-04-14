@@ -33,10 +33,11 @@ while enFonctionnement:
 
 
     # récuperer la magie du joueur
+
     for magie in jeu.player_red.all_projectiles:
-        magie.move()
+        magie.move(flipped_Red)
     for magie in jeu.player_purple.all_projectiles:
-        magie.move()
+        magie.move(flipped_Purple)
 
     #appliquer ensemble image du groupe de projectile
     jeu.player_red.all_projectiles.draw(ecran)
@@ -75,7 +76,7 @@ while enFonctionnement:
             jeu.pressed[event.key] = True
             #detecte si touche e est declanché pour lancer le projectil
             if event.key==pygame.K_e:
-                jeu.player_red.launch_Magie()
+                jeu.player_red.launch_Magie(flipped_Red)
             if event.key==pygame.K_KP0:
                 jeu.player_purple.launch_Magie()
 

@@ -42,9 +42,9 @@ class Player_red(pygame.sprite.Sprite):
 
 
 
-    def launch_Magie(self):
+    def launch_Magie(self, flipped):
         # creation d'une nouvelle instance magie pour cloner l'attaque magique
-        self.all_projectiles.add(Magie(self))
+        self.all_projectiles.add(Magie(self, flipped))
 
     def move_right(self, flipped):
         self.rect.x+=self.velocity
