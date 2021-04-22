@@ -6,7 +6,7 @@ class Player_purple(pygame.sprite.Sprite):
     def __init__(self, jeu):
         super().__init__()
         self.jeu = jeu
-        infoEcran = pygame.display.Info()
+        self.infoEcran = pygame.display.Info()
         self.health = 100
         self.max_health = 100
         self.attack = 5
@@ -14,11 +14,11 @@ class Player_purple(pygame.sprite.Sprite):
         self.velocity = 10
         self.image = pygame.image.load("design\Wizard\PNG\Wizard\idle_1.png")
         # adaptation pour que mage1 puisse s'adapter à tout écran
-        self.image = pygame.transform.scale(self.image, (int(infoEcran.current_w / 5.5), int(infoEcran.current_h // 3.3)))
+        self.image = pygame.transform.scale(self.image, (int(self.infoEcran.current_w / 5.5), int(self.infoEcran.current_h // 3.3)))
         # position de départ du joueur 1
         self.rect = self.image.get_rect()
-        self.rect.x = infoEcran.current_w // 7
-        self.rect.y = infoEcran.current_h // 1.48
+        self.rect.x = self.infoEcran.current_w // 7
+        self.rect.y = self.infoEcran.current_h // 1.48
 
     def maj_barre_vie (self,surface):
         #couleur pour jauge de vie
@@ -29,10 +29,10 @@ class Player_purple(pygame.sprite.Sprite):
         fond_couleur_barre =(186, 216, 186) #gris
 
         #position jauge de vie plus taille
-        position_barre=[self.rect.x+55,self.rect.y-10, self.health, 10] #self.health est la longueur de la barre , epaisseur
+        position_barre=[self.rect.x+(self.infoEcran.current_w//20.5),self.rect.y-(self.infoEcran.current_h//120), self.health, 10] #self.health est la longueur de la barre , epaisseur
 
         #position arriere plan jauge
-        arriere_plan_position = [self.rect.x+55,self.rect.y-10, self.max_health, 10] #self.max_health est la longueur totale de la barre , epaisseur
+        arriere_plan_position =[self.rect.x+(self.infoEcran.current_w//20.5),self.rect.y-(self.infoEcran.current_h//120), self.health, 10] #self.max_health est la longueur totale de la barre , epaisseur
 
         #apparition barre de vie
         pygame.draw.rect(surface, fond_couleur_barre,arriere_plan_position)

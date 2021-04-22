@@ -5,8 +5,9 @@ from magie import Magie
 class Player_red(pygame.sprite.Sprite):
     def __init__(self, jeu):
         super().__init__()
+        #on utilise les selfs pour que les variables puissent etre utilisés dans toute la classe
         self.jeu = jeu
-        infoEcran = pygame.display.Info()
+        self.infoEcran = pygame.display.Info()
         self.health = 100
         self.max_health = 100
         self.attack = 5
@@ -14,11 +15,11 @@ class Player_red(pygame.sprite.Sprite):
         self.velocity = 10
         self.image = pygame.image.load("design\Wizard\PNG\Wizard_fire\idle_2.png")
         # adaptation pour que mage1 puisse s'adapter à tout écran
-        self.image = pygame.transform.scale(self.image, (infoEcran.current_w // 5, infoEcran.current_h // 3))
+        self.image = pygame.transform.scale(self.image, (self.infoEcran.current_w // 5, self.infoEcran.current_h // 3))
         # position de départ du joueur 1
         self.rect = self.image.get_rect()
-        self.rect.x = infoEcran.current_w // 9
-        self.rect.y = infoEcran.current_h // 1.55
+        self.rect.x = self.infoEcran.current_w // 9
+        self.rect.y = self.infoEcran.current_h // 1.55
 
     def damage (self, quantité ):
         #infliger des degats
@@ -32,10 +33,10 @@ class Player_red(pygame.sprite.Sprite):
         fond_couleur_barre = (186, 216, 186)  # gris
 
         #position jauge de vie plus taille
-        position_barre=[self.rect.x+50,self.rect.y-5, self.health, 10] #self.health est la longueur de la barre , epaisseur
+        position_barre=[self.rect.x+(self.infoEcran.current_w//22.5),self.rect.y-(self.infoEcran.current_h//120), self.health, 10] #self.health est la longueur de la barre , epaisseur
 
         # position arriere plan jauge
-        arriere_plan_position = [self.rect.x +50, self.rect.y -5, self.max_health,10]  # self.max_health est la longueur totale de la barre , epaisseur
+        arriere_plan_position =[self.rect.x+(self.infoEcran.current_w//22.5),self.rect.y-(self.infoEcran.current_h//120), self.health, 10] # self.max_health est la longueur totale de la barre , epaisseur
 
         #apparition barre de vie
         pygame.draw.rect(surface, fond_couleur_barre, arriere_plan_position)
