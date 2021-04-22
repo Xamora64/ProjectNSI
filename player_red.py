@@ -36,7 +36,7 @@ class Player_red(pygame.sprite.Sprite):
         position_barre=[self.rect.x+(self.infoEcran.current_w//22.5),self.rect.y-(self.infoEcran.current_h//120), self.health, 10] #self.health est la longueur de la barre , epaisseur
 
         # position arriere plan jauge
-        arriere_plan_position =[self.rect.x+(self.infoEcran.current_w//22.5),self.rect.y-(self.infoEcran.current_h//120), self.health, 10] # self.max_health est la longueur totale de la barre , epaisseur
+        arriere_plan_position =[self.rect.x+(self.infoEcran.current_w//22.5),self.rect.y-(self.infoEcran.current_h//120), self.max_health, 10] # self.max_health est la longueur totale de la barre , epaisseur
 
         #apparition barre de vie
         pygame.draw.rect(surface, fond_couleur_barre, arriere_plan_position)

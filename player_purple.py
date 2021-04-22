@@ -5,6 +5,7 @@ from magie import Magie
 class Player_purple(pygame.sprite.Sprite):
     def __init__(self, jeu):
         super().__init__()
+        self.sprite = pygame.sprite.Sprite
         self.jeu = jeu
         self.infoEcran = pygame.display.Info()
         self.health = 100
@@ -15,10 +16,18 @@ class Player_purple(pygame.sprite.Sprite):
         self.image = pygame.image.load("design\Wizard\PNG\Wizard\idle_1.png")
         # adaptation pour que mage1 puisse s'adapter à tout écran
         self.image = pygame.transform.scale(self.image, (int(self.infoEcran.current_w / 5.5), int(self.infoEcran.current_h // 3.3)))
+        #Fait "flip" l'image à 90 degres pour regarder à gauche
+        #self.image = pygame.transform.flip(self.image, 90, 0)
         # position de départ du joueur 1
         self.rect = self.image.get_rect()
-        self.rect.x = self.infoEcran.current_w // 7
+        self.rect.x = self.infoEcran.current_w // 1.5
         self.rect.y = self.infoEcran.current_h // 1.48
+
+    def damage (self, quantité ):
+        #infliger des degats0
+        self.health-=quantité
+        #if self.health <= 0:
+            #faire la mort
 
     def maj_barre_vie (self,surface):
         #couleur pour jauge de vie
@@ -32,7 +41,7 @@ class Player_purple(pygame.sprite.Sprite):
         position_barre=[self.rect.x+(self.infoEcran.current_w//20.5),self.rect.y-(self.infoEcran.current_h//120), self.health, 10] #self.health est la longueur de la barre , epaisseur
 
         #position arriere plan jauge
-        arriere_plan_position =[self.rect.x+(self.infoEcran.current_w//20.5),self.rect.y-(self.infoEcran.current_h//120), self.health, 10] #self.max_health est la longueur totale de la barre , epaisseur
+        arriere_plan_position =[self.rect.x+(self.infoEcran.current_w//20.5),self.rect.y-(self.infoEcran.current_h//120), self.max_health, 10] #self.max_health est la longueur totale de la barre , epaisseur
 
         #apparition barre de vie
         pygame.draw.rect(surface, fond_couleur_barre,arriere_plan_position)

@@ -24,6 +24,10 @@ class Magie(pygame.sprite.Sprite):
     def move(self, flipped):
             if self.player.jeu.check_collision(self.player.jeu.player_red,self.player.all_projectiles) or self.player.jeu.check_collision(self.player.jeu.player_purple,self.player.all_projectiles):
                 #supprime la boule quand elle touche un joueur
+                if self.player != self.player.jeu.player_red:
+                    self.player.jeu.player_red.damage(20)
+                else:
+                    self.player.jeu.player_purple.damage(20)
                 self.remove()
 
             if not flipped and self.magie_turn == 0 or self.magie_turn == 1:

@@ -19,6 +19,8 @@ jeu = Jeu()
 
 enFonctionnement = True
 flipped_Purple = False
+jeu.player_purple.move_left(flipped_Purple)
+flipped_Purple = True
 flipped_Red = False
 
 # boucle tant que running est vrai
