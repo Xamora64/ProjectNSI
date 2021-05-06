@@ -14,8 +14,8 @@ class Player_red(pygame.sprite.Sprite):
         self.all_projectiles = pygame.sprite.Group()
         self.velocity = 12
         self.jumping = False
-        self.velocity_jumpMax = 25
-        self.velocity_jump = self.velocity_jumpMax
+        self.jumpMax = 20
+        self.jump = self.jumpMax
         self.image = pygame.image.load("design\Wizard\PNG\Wizard_fire\idle_2.png")
         # adaptation pour que mage1 puisse s'adapter à tout écran
         self.image = pygame.transform.scale(self.image, (self.infoEcran.current_w // 5, self.infoEcran.current_h // 3))
@@ -62,8 +62,8 @@ class Player_red(pygame.sprite.Sprite):
             self.image=pygame.transform.flip(self.image,-90,0)
 
     def jump(self):
-        self.rect.y -= self.velocity_jump
-        self.velocity_jump -= 1
-        if self.velocity_jump < -self.velocity_jumpMax:
+        self.rect.y -= self.jump
+        self.jump -= 1
+        if self.jump < -self.jumpMax:
             self.jumping = False
-            self.velocity_jump = self.velocity_jumpMax
+            self.jump = self.jumpMax
