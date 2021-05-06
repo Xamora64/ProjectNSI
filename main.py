@@ -79,7 +79,7 @@ while enFonctionnement:
     # mettre à jour l'écran
     pygame.display.flip()
 
-    # si le joueur ferme cette fenetre
+    # Tout les "events"
     for event in pygame.event.get():
         # dès que l'évenement "fermeture" est la
         if event.type == pygame.QUIT:
