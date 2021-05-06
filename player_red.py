@@ -8,26 +8,36 @@ class Player_red(pygame.sprite.Sprite):
         #on utilise les selfs pour que les variables puissent etre utilisés dans toute la classe
         self.jeu = jeu
         self.infoEcran = pygame.display.Info()
+        #Point de vie
         self.health = 100
         self.max_health = 100
+        #Point d'attaque
         self.attack = 5
+        #Liste des projectiles lancer par le joueur Rouge
         self.all_projectiles = pygame.sprite.Group()
-        self.velocity = 12
+        #Vitesse de déplacement
+        self.velocity = (self.infoEcran.current_w // 150)
+        #Vérifié si il est en train de sauter
         self.jumping = False
-        self.jumpMax = 20
+        #La hauteur du saut
+        self.jumpMax = (self.infoEcran.current_w // 70)
         self.jump = self.jumpMax
+        #Son image
         self.image = pygame.image.load("design\Wizard\PNG\Wizard_fire\idle_2.png")
         # adaptation pour que mage1 puisse s'adapter à tout écran
         self.image = pygame.transform.scale(self.image, (self.infoEcran.current_w // 5, self.infoEcran.current_h // 3))
         # position de départ du joueur 1
         self.rect = self.image.get_rect()
+        #Sa position dans l'écran au début du jeu
         self.rect.x = self.infoEcran.current_w // 9
         self.rect.y = self.infoEcran.current_h // 1.55
 
+    #Fonction pour faire subir des dégats au joueur
     def damage (self, quantité ):
         #infliger des degats
         self.health-=quantité
 
+    #Fonction pour faire apparaitre sa barre de vie et qu'elle change
     def maj_barre_vie (self,surface):
         #couleur pour jauge de vie
         couleur_barre =(124, 233, 146) #verte
@@ -46,24 +56,29 @@ class Player_red(pygame.sprite.Sprite):
         pygame.draw.rect(surface,couleur_barre,position_barre)
 
 
-
+    #Fonction appeler si le joueur appuie sur le bouton pour lancer une boule de feu
     def launch_Magie(self, flipped):
         # creation d'une nouvelle instance magie pour cloner l'attaque magique
         self.all_projectiles.add(Magie(self, flipped))
 
+    #Fonction de déplacement à droite
     def move_right(self, flipped):
         self.rect.x+=self.velocity
         if flipped == True:
             self.image=pygame.transform.flip(self.image,90,0)
 
+    #Fonction de déplacement à gauche
     def move_left(self, flipped):
         self.rect.x-=self.velocity
         if flipped == False:
             self.image=pygame.transform.flip(self.image,-90,0)
 
+    #Fonction du saut
     def jump_fonction(self):
         self.rect.y -= self.jump
-        self.jump -= 1
+        #La gravité et on l'adapte pour pas que sa change par rapport à la taille de l'écran
+        self.jump -= (self.infoEcran.current_w // 900)
+        #Vérifictaion pour quand le joueur touche le sol
         if self.jump < -self.jumpMax:
             self.jumping = False
             self.jump = self.jumpMax
