@@ -49,10 +49,10 @@ class Player_purple(pygame.sprite.Sprite):
         fond_couleur_barre =(186, 216, 186) #gris
 
         #position jauge de vie plus taille
-        position_barre=[self.rect.x+(self.infoEcran.current_w//20.5),self.rect.y-(self.infoEcran.current_h//120), self.health, 10] #self.health est la longueur de la barre , epaisseur
+        position_barre=[self.rect.x+(self.infoEcran.current_w//17),self.rect.y-(self.infoEcran.current_h//120), self.health*self.infoEcran.current_w/1200, 10] #self.health est la longueur de la barre , epaisseur
 
         #position arriere plan jauge
-        arriere_plan_position =[self.rect.x+(self.infoEcran.current_w//20.5),self.rect.y-(self.infoEcran.current_h//120), self.max_health, 10] #self.max_health est la longueur totale de la barre , epaisseur
+        arriere_plan_position =[self.rect.x+(self.infoEcran.current_w//17),self.rect.y-(self.infoEcran.current_h//120), self.max_health*self.infoEcran.current_w/1200, 10] #self.max_health est la longueur totale de la barre , epaisseur
 
         #apparition barre de vie
         pygame.draw.rect(surface, fond_couleur_barre,arriere_plan_position)

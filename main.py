@@ -44,6 +44,8 @@ while enFonctionnement:
     #appliquer ensemble image du groupe de projectile
     jeu.player_red.all_projectiles.draw(ecran)
     jeu.player_purple.all_projectiles.draw(ecran)
+
+    #Appliquer les barres de vie
     jeu.player_red.maj_barre_vie(ecran)
     jeu.player_purple.maj_barre_vie(ecran)
 
@@ -69,18 +71,10 @@ while enFonctionnement:
     #perso rouge
     if jeu.player_red.jumping:
         jeu.player_red.jump_fonction()
-    elif jeu.pressed.get(pygame.K_z):
-        jeu.player_red.jumping=True
 
     #perso violet
     if jeu.player_purple.jumping:
         jeu.player_purple.jump_fonction()
-    elif jeu.pressed.get(pygame.K_UP):
-        jeu.player_purple.jumping=True
-
-
-
-
 
     # mettre à jour l'écran
     pygame.display.flip()
@@ -99,6 +93,10 @@ while enFonctionnement:
                 jeu.player_red.launch_Magie(flipped_Red)
             if event.key==pygame.K_KP0:
                 jeu.player_purple.launch_Magie(flipped_Purple)
+            if event.key==pygame.K_z:
+                jeu.player_red.jumping = True
+            if event.key==pygame.K_UP:
+                jeu.player_purple.jumping = True
 
         elif event.type == pygame.KEYUP:
             jeu.pressed[event.key] = False
