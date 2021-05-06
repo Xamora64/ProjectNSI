@@ -20,7 +20,7 @@ class Player_red(pygame.sprite.Sprite):
         #Vérifié si il est en train de sauter
         self.jumping = False
         #La hauteur du saut
-        self.jumpMax = (self.infoEcran.current_w // 70)
+        self.jumpMax = (self.infoEcran.current_h // 40)
         self.jump = self.jumpMax
         #Son image
         self.image = pygame.image.load("design\Wizard\PNG\Wizard_fire\idle_2.png")
@@ -77,7 +77,7 @@ class Player_red(pygame.sprite.Sprite):
     def jump_fonction(self):
         self.rect.y -= self.jump
         #La gravité et on l'adapte pour pas que sa change par rapport à la taille de l'écran
-        self.jump -= (self.infoEcran.current_w // 900)
+        self.jump -= (self.infoEcran.current_h // 500)
         #Vérifictaion pour quand le joueur touche le sol
         if self.jump < -self.jumpMax:
             self.jumping = False
