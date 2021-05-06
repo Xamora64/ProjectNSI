@@ -57,7 +57,7 @@ while enFonctionnement:
         flipped_Red = True
 
     if jeu.player_red.jumping:
-        jeu.player_red.jump()
+        jeu.player_red.jump_fonction()
     elif jeu.pressed.get(pygame.K_z):
         jeu.player_red.jumping=True
 
@@ -70,7 +70,7 @@ while enFonctionnement:
         flipped_Purple = True
 
     if jeu.player_red.jumping:
-        jeu.player_red.jump()
+        jeu.player_red.jump_fonction()
     elif jeu.pressed.get(pygame.K_UP):
         jeu.player_red.jumping=True
 

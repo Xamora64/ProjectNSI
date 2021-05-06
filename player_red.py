@@ -61,7 +61,7 @@ class Player_red(pygame.sprite.Sprite):
         if flipped == False:
             self.image=pygame.transform.flip(self.image,-90,0)
 
-    def jump(self):
+    def jump_fonction(self):
         self.rect.y -= self.jump
         self.jump -= 1
         if self.jump < -self.jumpMax:
