@@ -12,7 +12,10 @@ class Player_red(pygame.sprite.Sprite):
         self.max_health = 100
         self.attack = 5
         self.all_projectiles = pygame.sprite.Group()
-        self.velocity = 10
+        self.velocity = 12
+        self.jumping = False
+        self.velocity_jumpMax = 25
+        self.velocity_jump = self.velocity_jumpMax
         self.image = pygame.image.load("design\Wizard\PNG\Wizard_fire\idle_2.png")
         # adaptation pour que mage1 puisse s'adapter à tout écran
         self.image = pygame.transform.scale(self.image, (self.infoEcran.current_w // 5, self.infoEcran.current_h // 3))
@@ -57,3 +60,10 @@ class Player_red(pygame.sprite.Sprite):
         self.rect.x-=self.velocity
         if flipped == False:
             self.image=pygame.transform.flip(self.image,-90,0)
+
+    def jump(self):
+        self.rect.y -= self.velocity_jump
+        self.velocity_jump -= 1
+        if self.velocity_jump < -self.velocity_jumpMax:
+            self.jumping = False
+            self.velocity_jump = self.velocity_jumpMax
