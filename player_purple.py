@@ -15,7 +15,7 @@ class Player_purple(pygame.sprite.Sprite):
         self.velocity = 10
         #utilisé pour le saut
         self.jumping = False
-        self.jumpMax = 20
+        self.jumpMax = (self.infoEcran.current_w // 70)
         self.jump = self.jumpMax
 
         self.image = pygame.image.load("design\Wizard\PNG\Wizard\idle_1.png")
@@ -69,7 +69,8 @@ class Player_purple(pygame.sprite.Sprite):
         #Sert à faire sauter le joueur violet
     def jump_fonction(self):
         self.rect.y -= self.jump
-        self.jump -= 1
+        #La gravité et on l'adapte pour pas que sa change par rapport à la taille de l'écran
+        self.jump -= (self.infoEcran.current_w // 900)
         #sert à empecher le joueur d'aller plus bas que le sol
         if self.jump < -self.jumpMax:
             self.jumping = False
