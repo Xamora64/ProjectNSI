@@ -26,7 +26,7 @@ class Player_red(pygame.sprite.Sprite):
         self.image = pygame.image.load("design\Wizard\PNG\Wizard_fire\idle_2.png")
         # adaptation pour que mage1 puisse s'adapter à tout écran
         self.image = pygame.transform.scale(self.image, (self.infoEcran.current_w // 5, self.infoEcran.current_h // 3))
-        # position de départ du joueur 1
+        #Avoir sa position X Y
         self.rect = self.image.get_rect()
         #Sa position dans l'écran au début du jeu
         self.rect.x = self.infoEcran.current_w // 9
