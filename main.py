@@ -56,11 +56,6 @@ while enFonctionnement:
         jeu.player_red.move_left(flipped_Red)
         flipped_Red = True
 
-    if jeu.player_red.jumping:
-        jeu.player_red.jump_fonction()
-    elif jeu.pressed.get(pygame.K_z):
-        jeu.player_red.jumping=True
-
     #perso violet
     if jeu.pressed.get(pygame.K_RIGHT):
         jeu.player_purple.move_right(flipped_Purple)
@@ -68,6 +63,22 @@ while enFonctionnement:
     elif jeu.pressed.get(pygame.K_LEFT):
         jeu.player_purple.move_left(flipped_Purple)
         flipped_Purple = True
+
+
+    #Touche pour sauter + appel fonction de saut
+    #perso rouge
+    if jeu.player_red.jumping:
+        jeu.player_red.jump_fonction()
+    elif jeu.pressed.get(pygame.K_z):
+        jeu.player_red.jumping=True
+
+    #perso violet
+    if jeu.player_purple.jumping:
+        jeu.player_purple.jump_fonction()
+    elif jeu.pressed.get(pygame.K_UP):
+        jeu.player_purple.jumping=True
+
+
 
 
 

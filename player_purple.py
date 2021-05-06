@@ -13,8 +13,13 @@ class Player_purple(pygame.sprite.Sprite):
         self.attack = 5
         self.all_projectiles = pygame.sprite.Group()
         self.velocity = 10
+        #utilisé pour le saut
+        self.jumping = False
+        self.jumpMax = 20
+        self.jump = self.jumpMax
+
         self.image = pygame.image.load("design\Wizard\PNG\Wizard\idle_1.png")
-        # adaptation pour que mage1 puisse s'adapter à tout écran
+        # adaptation pour que joueur violet puisse s'adapter à tout écran
         self.image = pygame.transform.scale(self.image, (int(self.infoEcran.current_w / 5.5), int(self.infoEcran.current_h // 3.3)))
         #Fait "flip" l'image à 90 degres pour regarder à gauche
         #self.image = pygame.transform.flip(self.image, 90, 0)
@@ -61,3 +66,11 @@ class Player_purple(pygame.sprite.Sprite):
         if flipped == False:
             self.image=pygame.transform.flip(self.image,-90,0)
 
+        #Sert à faire sauter le joueur violet
+    def jump_fonction(self):
+        self.rect.y -= self.jump
+        self.jump -= 1
+        #sert à empecher le joueur d'aller plus bas que le sol
+        if self.jump < -self.jumpMax:
+            self.jumping = False
+            self.jump = self.jumpMax
