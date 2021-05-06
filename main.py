@@ -69,10 +69,6 @@ while enFonctionnement:
         jeu.player_purple.move_left(flipped_Purple)
         flipped_Purple = True
 
-    if jeu.player_red.jumping:
-        jeu.player_red.jump_fonction()
-    elif jeu.pressed.get(pygame.K_UP):
-        jeu.player_red.jumping=True
 
 
     # mettre à jour l'écran
