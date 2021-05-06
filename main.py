@@ -64,19 +64,14 @@ while enFonctionnement:
         jeu.player_purple.move_left(flipped_Purple)
         flipped_Purple = True
 
-
-    #Touche pour sauter + appel fonction de saut
+    #appel fonction de saut si il est en train de sauter
     #perso rouge
     if jeu.player_red.jumping:
         jeu.player_red.jump_fonction()
-    elif jeu.pressed.get(pygame.K_z):
-        jeu.player_red.jumping=True
 
     #perso violet
     if jeu.player_purple.jumping:
         jeu.player_purple.jump_fonction()
-    elif jeu.pressed.get(pygame.K_UP):
-        jeu.player_purple.jumping=True
 
 
 
@@ -99,6 +94,10 @@ while enFonctionnement:
                 jeu.player_red.launch_Magie(flipped_Red)
             if event.key==pygame.K_KP0:
                 jeu.player_purple.launch_Magie(flipped_Purple)
+            if event.key == pygame.K_z:
+                jeu.player_red.jumping = True;
+            if event.key == pygame.K_UP:
+                jeu.player_red.jumping = True;
 
         elif event.type == pygame.KEYUP:
             jeu.pressed[event.key] = False
