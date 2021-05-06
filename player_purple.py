@@ -15,7 +15,7 @@ class Player_purple(pygame.sprite.Sprite):
         self.velocity = 10
         #utilisé pour le saut
         self.jumping = False
-        self.jumpMax = 20
+        self.jumpMax = (self.infoEcran.current_w // 70)
         self.jump = self.jumpMax
 
         self.image = pygame.image.load("design\Wizard\PNG\Wizard\idle_1.png")
