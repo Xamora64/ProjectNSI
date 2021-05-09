@@ -10,8 +10,12 @@ class Jeu:
         self.player_purple = Player_purple(self)
         self.pressed={}
 
+    #Permet de géré les colission surtout des boules de feu sur le joueur, le True permet de dire que sa se supprime
+    #On prend un sprite, un group, un boolean, et créer une "hitbox"
+    #Le sprite est unique telle un joueur, un groupe de sprite telle les boules de feu, le boolean pour savoir si
+    #un élement du groupe se supprime en touchant le spirte, et la hitbox pour savoir quand sa touche
     def check_collision(self, sprite, group):
-        return pygame.sprite.spritecollide(sprite, group, False, pygame.sprite.collide_mask)
+        return pygame.sprite.spritecollide(sprite, group, True, pygame.sprite.collide_mask)
 
 
 

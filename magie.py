@@ -9,7 +9,7 @@ class Magie(pygame.sprite.Sprite):
         self.magie_turn = 0
         self.velocity=13
         self.image=pygame.image.load('design\jp.jpeg')
-        self.image = pygame.transform.scale(self.image, (50, 50))
+        self.image = pygame.transform.scale(self.image, (self.ecranW//40, self.ecranW//40))
         self.rect=self.image.get_rect()
         if not flipped:
             self.rect.x = player.rect.x + (self.ecranW // 6.2)
@@ -18,17 +18,18 @@ class Magie(pygame.sprite.Sprite):
             self.rect.x = player.rect.x - (self.ecranW //50)
             self.rect.y = player.rect.y + (self.ecranW // 10)
 
-    def remove(self):
-        self.player.all_projectiles.remove(self)
-
     def move(self, flipped):
             if self.player.jeu.check_collision(self.player.jeu.player_red,self.player.all_projectiles) or self.player.jeu.check_collision(self.player.jeu.player_purple,self.player.all_projectiles):
                 #supprime la boule quand elle touche un joueur
                 if self.player != self.player.jeu.player_red:
                     self.player.jeu.player_red.damage(20)
+                    if self.player.jeu.player_red.health <= 0:
+                        self.player.jeu.player_red.remove()
                 else:
                     self.player.jeu.player_purple.damage(20)
-                self.remove()
+                    if self.player.jeu.player_purple.health <= 0:
+                        self.player.jeu.player_purple.remove()
+
 
             if not flipped and self.magie_turn == 0 or self.magie_turn == 1:
                 self.rect.x += self.velocity
