@@ -23,6 +23,8 @@ class Player_purple(pygame.sprite.Sprite):
         #La hauteur du saut
         self.jumpMax = (self.infoEcran.current_w // 70)
         self.jump = self.jumpMax
+        #Max de boule de magie
+        self.magie = 2
         #Son image
         self.image = pygame.image.load("design\Wizard\PNG\Wizard\idle_1.png")
         # adaptation pour que mage2 puisse s'adapter à tout écran
@@ -38,6 +40,7 @@ class Player_purple(pygame.sprite.Sprite):
         self.health-=quantité
         if self.health <=0:
             self.image = pygame.transform.scale(self.image, (0, 0))
+        self.jeu.player_red.all_projectiles.remove(1)
 
     #Fonction pour faire apparaitre sa barre de vie et qu'elle change
     def maj_barre_vie (self,surface):
@@ -78,8 +81,9 @@ class Player_purple(pygame.sprite.Sprite):
     #Fonction appeler si le joueur appuie sur le bouton pour lancer une boule de feu
     def launch_Magie(self, flipped):
         # creation d'une nouvelle instance magie pour cloner l'attaque magique
-        if self.health > 0:
+        if self.health > 0 and self.magie > 0:
             self.all_projectiles.add(Magie(self, flipped))
+            self.magie = self.magie - 1
 
     #Fonction de déplacement à droite
     def move_right(self, flipped):
